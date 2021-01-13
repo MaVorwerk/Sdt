@@ -16,7 +16,11 @@ namespace Sdt.Data.Context
         public SdtDataContext(DbContextOptions<SdtDataContext> options) : base(options)
         {
             //Database.EnsureCreated();
-            
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
         }
     }
 }
