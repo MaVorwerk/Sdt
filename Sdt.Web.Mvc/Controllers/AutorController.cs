@@ -31,7 +31,7 @@ namespace Sdt.Web.Mvc.Controllers
         public IActionResult GetImage(int autorId)
         {
             var autor = _context.Autoren.Find(autorId);
-            if (autor?.PhotoMimeType != null)
+            if (autor?.PhotoMimeType != null) //Autor Bild in Db vorhanden
             {
                 return new FileContentResult(autor.Photo, autor.PhotoMimeType);
             }

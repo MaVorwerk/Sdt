@@ -16,6 +16,8 @@ namespace Sdt.Domain.Entities
 
         public string Name { get; set; }
         public string Beschreibung { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime? Geburtsdatum { get; set; }
         public virtual IList<Spruch> Sprueche { get; set; } = new List<Spruch>();
 
