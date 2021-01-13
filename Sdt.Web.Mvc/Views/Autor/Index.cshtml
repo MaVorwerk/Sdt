@@ -32,6 +32,8 @@
     <tr>
         <td>
             @*@Html.DisplayFor(modelItem => item.Photo)*@
+            @* 1. Version Klassik *@
+            <img width="120" src="@Url.Action("GetImage", "Autor", new { autorId = item.AutorId })" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)

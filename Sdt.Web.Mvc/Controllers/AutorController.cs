@@ -9,6 +9,8 @@ namespace Sdt.Web.Mvc.Controllers
 {
     public class AutorController : Controller
     {
+        #region Members/Constructor 
+
         private readonly SdtDataContext _context;
 
         public AutorController(SdtDataContext context)
@@ -16,10 +18,27 @@ namespace Sdt.Web.Mvc.Controllers
             _context = context;
         }
 
+        #endregion
+
+        #region GET
+
         public IActionResult Index()
         {
             var autoren = _context.Autoren.ToList();
             return View(autoren);
         }
+
+        public IActionResult GetImage(int autorId)
+        {
+            var autor = _context.Autoren.Find(autorId);
+            if (autor?.PhotoMimeType != null)
+            {
+                return new FileContentResult(autor.Photo, autor.PhotoMimeType);
+            }
+
+            return new VirtualFileResult("~/images/noimg.jpg", "image/jpeg");
+        }
+
+        #endregion
     }
 }
