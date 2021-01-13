@@ -16,6 +16,9 @@ namespace Sdt.Data.Context
         public SdtDataContext(DbContextOptions<SdtDataContext> options) : base(options)
         {
             //Database.EnsureCreated();
+
+            //Reverse Engineering
+            //Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=CsaeSdt;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Modeltest
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
