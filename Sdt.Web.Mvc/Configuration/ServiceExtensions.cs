@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,11 @@ namespace Sdt.Web.Mvc.Configuration
             services.AddScoped<IAutorRepository, AutorRepository>();
             services.AddScoped<ISpruchRepository, SpruchRepository>();
             //services.AddScoped<IAutorRepository, FakeAutorRepository>();
+        }
+
+        public static void ConfigureAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
     }
 }

@@ -30,6 +30,7 @@ namespace Sdt.Web.Mvc
         {
             services.ConfigureSqlContext(Configuration);
             services.ConfigureRepository();
+            services.ConfigureAutoMapper();
 
             services.AddControllersWithViews();
         }

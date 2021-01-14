@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Sdt.Data.Context;
 using Sdt.Data.Contracts;
 
@@ -15,18 +16,21 @@ namespace Sdt.Web.Mvc.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ISpruchRepository _spruchRepository;
+        private readonly IMapper _mapper;
 
-        public HomeController(ILogger<HomeController> logger, ISpruchRepository spruchRepository)
+        public HomeController(ILogger<HomeController> logger, ISpruchRepository spruchRepository, IMapper mapper)
         {
             _logger = logger;
             _spruchRepository = spruchRepository;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
             var spruch = _spruchRepository.GetSpruchDesTages();
 
-            var sdtVm = ModelFactory.CreateSpruchDesTagesViewModel(spruch);
+            //var sdtVm = ModelFactory.CreateSpruchDesTagesViewModel(spruch);
+            var sdtVm = _mapper.Map<SpruchDesTagesViewModel>(spruch);
 
             return View(sdtVm);
         }
