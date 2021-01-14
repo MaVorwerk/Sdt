@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Sdt.Data.EntityTypeConfiguration;
 using Sdt.Domain.Entities;
 
 namespace Sdt.Data.Context
@@ -23,6 +24,9 @@ namespace Sdt.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<Autor>().ToTable("Autoren");
+            //modelBuilder.ApplyConfiguration(new AutorEntityConf());
+
             modelBuilder.Seed();
         }
     }
