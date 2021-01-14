@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Sdt.Data.Context;
 using Sdt.Data.Contracts;
 using Sdt.Domain.Entities;
 
@@ -11,45 +13,51 @@ namespace Sdt.Data.Repository
     public class AutorRepository : IAutorRepository
     {
         private bool disposedValue;
+        private readonly SdtDataContext _context;
+
+        public AutorRepository(SdtDataContext context)
+        {
+            _context = context;
+        }
 
         public void Add(Autor entity)
         {
-            throw new NotImplementedException();
+            _context.Autoren.Add(entity);
         }
 
         public void Delete(Autor entity)
         {
-            throw new NotImplementedException();
+            _context.Autoren.Remove(entity);
         }
 
-        public Task<bool> ExistsAsync(int id)
+        public async Task<bool> ExistsAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Autoren.FindAsync(id) != null;
         }
 
         public IQueryable<Autor> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Autoren.Include(c => c.Sprueche);
         }
 
         public Autor GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Autoren.Find(id);
         }
 
         public IQueryable<Autor> GetOnlyAutoren()
         {
-            throw new NotImplementedException();
+            return _context.Autoren;
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _context.SaveChanges() > 0;
         }
 
         public void Update(Autor entity)
         {
-            throw new NotImplementedException();
+            _context.Autoren.Update(entity);
         }
 
         protected virtual void Dispose(bool disposing)
@@ -59,6 +67,7 @@ namespace Sdt.Data.Repository
                 if (disposing)
                 {
                     // TODO: Verwalteten Zustand (verwaltete Objekte) bereinigen
+                    _context.Dispose();
                 }
 
                 // TODO: Nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer überschreiben

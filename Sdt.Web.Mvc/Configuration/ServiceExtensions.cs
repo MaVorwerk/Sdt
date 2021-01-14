@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sdt.Data.Context;
+using Sdt.Data.Contracts;
+using Sdt.Data.Repository;
 using Sdt.Web.Mvc.Controllers;
 using Sdt.Web.Mvc.Data;
 
@@ -32,7 +34,7 @@ namespace Sdt.Web.Mvc.Configuration
 
         public static void ConfigureRepository(this IServiceCollection services)
         {
-
+            services.AddScoped<IAutorRepository, AutorRepository>();
         }
     }
 }

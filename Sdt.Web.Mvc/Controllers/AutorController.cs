@@ -5,18 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Protocol;
 using Sdt.Data.Context;
+using Sdt.Data.Contracts;
 
 namespace Sdt.Web.Mvc.Controllers
 {
     public class AutorController : Controller
     {
-        #region Members/Constructor 
+        #region Members/Constructor
 
-        private readonly SdtDataContext _context;
+        private readonly IAutorRepository _autorRepository;
 
-        public AutorController(SdtDataContext context)
+        public AutorController(IAutorRepository autorRepository)
         {
-            _context = context;
+            _autorRepository = autorRepository;
         }
 
         #endregion
@@ -25,13 +26,13 @@ namespace Sdt.Web.Mvc.Controllers
 
         public IActionResult Index()
         {
-            var autoren = _context.Autoren.ToList();
+            var autoren = _autorRepository.GetOnlyAutoren().ToList();
             return View(autoren);
         }
 
         public IActionResult GetImage(int autorId)
         {
-            var autor = _context.Autoren.Find(autorId);
+            var autor = _autorRepository.GetById(autorId);
             if (autor?.PhotoMimeType != null) //Autor Bild in Db vorhanden
             {
                 return new FileContentResult(autor.Photo, autor.PhotoMimeType);
