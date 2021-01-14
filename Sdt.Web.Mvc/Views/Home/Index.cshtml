@@ -8,14 +8,16 @@
     <div class="jumbotron">
         <h5 class="text-center">Spruch des Tages</h5>
         <p class="text-center">
-            @if (!string.IsNullOrEmpty(Model.AutorBildType))
+            @*@if (!string.IsNullOrEmpty(Model.AutorBildType))
             {
                 <img width="120" src="data:@Model.AutorBildType;base64,@Convert.ToBase64String(Model.AutorBild)" />
             }
             else
             {
                 <img width="120" src="~/images/noimg.jpg" />
-            }
+            }*@
+            @* TagHelper *@
+            <imagedataurl image-mime-type="@Model.AutorBildType" image="@Model.AutorBild" width="150" alt-src="https://via.placeholder.com/150"></imagedataurl>
         </p>
         <blockquote class="text-center">
             <cite class="lead">@Model.SpruchText</cite>
