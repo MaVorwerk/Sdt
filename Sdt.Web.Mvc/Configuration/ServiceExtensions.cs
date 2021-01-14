@@ -35,6 +35,7 @@ namespace Sdt.Web.Mvc.Configuration
         public static void ConfigureRepository(this IServiceCollection services)
         {
             services.AddScoped<IAutorRepository, AutorRepository>();
+            services.AddScoped<ISpruchRepository, SpruchRepository>();
             //services.AddScoped<IAutorRepository, FakeAutorRepository>();
         }
     }

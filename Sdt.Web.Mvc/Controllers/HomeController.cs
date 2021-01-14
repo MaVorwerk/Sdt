@@ -7,20 +7,27 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Sdt.Data.Context;
+using Sdt.Data.Contracts;
 
 namespace Sdt.Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ISpruchRepository _spruchRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISpruchRepository spruchRepository)
         {
             _logger = logger;
+            _spruchRepository = spruchRepository;
         }
 
         public IActionResult Index()
         {
+            var spruch = _spruchRepository.GetSpruchDesTages();
+
+
+
             return View();
         }
 
