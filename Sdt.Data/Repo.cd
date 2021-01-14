@@ -3,8 +3,16 @@
   <Class Name="Sdt.Data.Repository.AutorRepository">
     <Position X="1.75" Y="5.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAYAAIAAACAAAAAAAAgAAAAAAAEAAAAAAgAAAgAAAIA=</HashCode>
+      <HashCode>AAYAAIAAACAABAAAAAgAAAAAAAEAAAAAAgAAAgAAAIA=</HashCode>
       <FileName>Repository\AutorRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sdt.Data.Repository.FakeAutorRepository">
+    <Position X="5" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAYAAIAAACAAAAAAAAgAAAAAAgEAAAAAEgAAAgAAAIA=</HashCode>
+      <FileName>Repository\FakeAutorRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
