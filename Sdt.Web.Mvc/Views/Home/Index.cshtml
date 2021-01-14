@@ -1,4 +1,6 @@
-﻿@{
+﻿@model SpruchDesTagesViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,18 +8,28 @@
     <div class="jumbotron">
         <h5 class="text-center">Spruch des Tages</h5>
         <p class="text-center">
-            <!-- Bild -->
+            @if (!string.IsNullOrEmpty(Model.AutorBildType))
+            {
+                <img width="120" src="data:@Model.AutorBildType;base64,@Convert.ToBase64String(Model.AutorBild)" />
+            }
+            else
+            {
+                <img width="120" src="~/images/noimg.jpg" />
+            }
         </p>
         <blockquote class="text-center">
-            <cite class="lead"><!-- Spruch --></cite>
+            <cite class="lead">@Model.SpruchText</cite>
         </blockquote>
         <p></p>
         <p class="text-right">
             <small>
-                <span><!-- AutorName --></span> - <span><!-- Beschreibung--></span>
+                <span>@Model.AutorName</span> - <span>@Model.AutorBeschreibung</span>
                 <br />
                 <span>
-                    <!-- Geburtsdatum -->
+                    @if (Model.AutorGeburtsdatum.HasValue)
+                    {
+                        @Model.AutorGeburtsdatum.Value.ToShortDateString()
+                    }
                 </span>
             </small>
         </p>

@@ -26,9 +26,9 @@ namespace Sdt.Web.Mvc.Controllers
         {
             var spruch = _spruchRepository.GetSpruchDesTages();
 
+            var sdtVm = ModelFactory.CreateSpruchDesTagesViewModel(spruch);
 
-
-            return View();
+            return View(sdtVm);
         }
 
         public IActionResult Privacy()
