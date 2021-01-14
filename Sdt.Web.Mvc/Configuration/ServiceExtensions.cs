@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sdt.Data.Context;
+using Sdt.Web.Mvc.Controllers;
 using Sdt.Web.Mvc.Data;
 
 namespace Sdt.Web.Mvc.Configuration
@@ -27,6 +28,11 @@ namespace Sdt.Web.Mvc.Configuration
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+        }
+
+        public static void ConfigureRepository(this IServiceCollection services)
+        {
+
         }
     }
 }

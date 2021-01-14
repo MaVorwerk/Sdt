@@ -29,6 +29,7 @@ namespace Sdt.Web.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureSqlContext(Configuration);
+            services.ConfigureRepository();
 
             services.AddControllersWithViews();
         }
