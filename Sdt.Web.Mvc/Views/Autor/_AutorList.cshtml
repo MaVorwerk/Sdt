@@ -1,4 +1,9 @@
-﻿@model IEnumerable<Sdt.Domain.Entities.Autor>
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@using Sdt.Web.Mvc.Controllers
+@using X.PagedList.Mvc.Core.Common
+@using X.PagedList.Web.Common
+@model IEnumerable<Sdt.Domain.Entities.Autor>
 
 <div id="autorList">
     <table class="table">
@@ -63,4 +68,11 @@
         </tbody>
     </table>
     <!-- Paging -->
+    <div class="d-flex justify-content-end">
+        @Html.PagedListPager((IPagedList)Model,
+       page => Url.Action(nameof(AutorController.IndexWithPaging), new { page }),
+       new PagedListRenderOptions { LiElementClasses = new[] { "page-item" }, PageClasses = new[] { "page-link" } })
+    </div>
 </div>
+
+<!--  2 => <a href="/Autor/IndexWithPaging?page=2> 2 </a>    -->

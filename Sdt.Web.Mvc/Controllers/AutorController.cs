@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Protocol;
 using Sdt.Data.Context;
 using Sdt.Data.Contracts;
+using Sdt.Domain.Entities;
 using X.PagedList;
 
 namespace Sdt.Web.Mvc.Controllers
@@ -41,7 +42,7 @@ namespace Sdt.Web.Mvc.Controllers
 
             var autorenPaged = autoren.ToPagedList(page, itemsPerPage);
 
-            return View(autoren);
+            return View(autorenPaged);
         }
 
         public IActionResult GetImage(int autorId)
