@@ -1,0 +1,30 @@
+﻿@model SdtSummaryViewModel
+
+<link href="~/css/adminlte.min.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-6">
+        <div class="info-box">
+            <span class="info-box-icon bg-info"><i class="fas fa-user-alt"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Autoren</span>
+                <span class="info-box-number">@Model.AnzahlAutoren</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+
+    </div>
+    <div class="col-6">
+        <div class="info-box">
+            <span class="info-box-icon bg-success"><i class="fas fa-quote-right"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">Sprüche</span>
+                <span class="info-box-number">@Model.AnzahlSprueche</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+
+    </div>
+</div>
