@@ -29,6 +29,12 @@ namespace Sdt.Web.Mvc.Controllers
             var autoren = _autorRepository.GetOnlyAutoren().ToList();
             return View(autoren);
         }
+        
+        public IActionResult IndexWithPaging()
+        {
+            var autoren = _autorRepository.GetOnlyAutoren().ToList();
+            return View(autoren);
+        }
 
         public IActionResult GetImage(int autorId)
         {
