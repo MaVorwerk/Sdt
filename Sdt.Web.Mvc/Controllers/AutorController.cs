@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Protocol;
 using Sdt.Data.Context;
 using Sdt.Data.Contracts;
+using X.PagedList;
 
 namespace Sdt.Web.Mvc.Controllers
 {
@@ -30,9 +31,16 @@ namespace Sdt.Web.Mvc.Controllers
             return View(autoren);
         }
         
-        public IActionResult IndexWithPaging()
+        public IActionResult IndexWithPaging(int page = 1)
         {
+            if (page < 1) page = 1;
+
+            var itemsPerPage = 2;
             var autoren = _autorRepository.GetOnlyAutoren().ToList();
+            //var autorenPaged = autoren.Skip((page - 1) * itemsPerPage).Take(itemsPerPage); //Manuelle Version
+
+            var autorenPaged = autoren.ToPagedList(page, itemsPerPage);
+
             return View(autoren);
         }
 
